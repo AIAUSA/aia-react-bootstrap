@@ -14,6 +14,7 @@ import * as ROUTES from '../../constants/routes';
 //import { withFirebase } from '../Firebase';
 
 import { withAuthentication } from '../Session';
+import { Container } from 'reactstrap';
 
 class App extends Component {
  
@@ -41,15 +42,16 @@ class App extends Component {
         return(
             <Router>
                 <div>
-                <Navigation />
+                    <Navigation />
 
-                <hr />
-
-                <Route exact path={ROUTES.LANDING} component={LandingPage} />
-                <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-                <Route path={ROUTES.HOME} component={HomePage} />
-                <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-                <Route path={ROUTES.ADMIN} component={AdminPage} />
+                    <hr />
+                    <Container>
+                        <Route exact path={ROUTES.LANDING} component={LandingPage} />
+                        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+                        <Route path={ROUTES.HOME} component={HomePage} />
+                        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+                        <Route path={ROUTES.ADMIN} component={AdminPage} />
+                    </Container>
                 </div>
             </Router>
         );
