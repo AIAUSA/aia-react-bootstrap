@@ -39,8 +39,12 @@ class Firebase {
             const dbUser = snapshot.val();
             
             // default empty roles
-            if (!dbUser.roles) {
-              dbUser.roles = {};
+            console.log("FB-45: " + dbUser);
+            if (dbUser !== null) 
+            {
+              if (!dbUser.roles) {
+                dbUser.roles = {};
+              }
             }
 
       
@@ -58,13 +62,10 @@ class Firebase {
       }
     });
 
-  // *** User API ***
-
-  user = uid => this.db.ref(`users/${uid}`);
-
-  users = () => this.db.ref('users');
-
-  checkRole = email => this.db.ref(`roles/${email}`);
+  // *** User API *** DO NOT MODIFY
+  user = uid => this.db.ref(`admin/users/${uid}`);
+  users = () => this.db.ref('admin/users');
+  checkRole = email => this.db.ref(`admin/roles/${email}`);
 }
  
 export default Firebase;
