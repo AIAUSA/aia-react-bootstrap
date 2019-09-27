@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Navigation from '../Navigation';
-import LandingPage from '../Landing';
 import SignUpPage from '../.app-login-components/SignUp';
 import SignInPage from '../.app-login-components/SignIn';
 import PasswordForgetPage from '../.app-login-components/PasswordForget';
@@ -17,7 +16,6 @@ import * as ROUTES from '../../constants/routes';
 
 import { withAuthentication } from '../.app-core/Session';
 import { Container } from 'reactstrap';
-import PasswordChange from '../.app-login-components/PasswordChange';
 
 class App extends Component {
  

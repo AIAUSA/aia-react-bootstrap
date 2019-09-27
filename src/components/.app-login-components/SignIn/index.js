@@ -111,7 +111,6 @@ class SignInGoogleBase extends Component {
           this.props.firebase.checkRole(socialAuthUser.user.email.replace("@","").replace(/\./g,""))
             .on('value', snapshot => {
               const dbrole = snapshot.val();
-              console.log(dbrole);
               if (dbrole === undefined || dbrole === null || dbrole === '') { 
                 //Set DEFAULT ROLE
                 role = ROLES.REGISTERED 
@@ -121,8 +120,6 @@ class SignInGoogleBase extends Component {
                 role = dbrole.role;
               }
 
-              console.log(role);
-         
               // Create a user in your Firebase Realtime Database too
               return this.props.firebase
                 .user(socialAuthUser.user.uid)
@@ -176,7 +173,6 @@ class SignInFacebookBase extends Component {
           this.props.firebase.checkRole(socialAuthUser.user.email.replace("@","").replace(/\./g,""))
             .on('value', snapshot => {
               const dbrole = snapshot.val();
-              console.log(dbrole);
               if (dbrole === undefined || dbrole === null || dbrole === '') { 
                 //Set DEFAULT ROLE
                 role = ROLES.REGISTERED 
@@ -186,8 +182,6 @@ class SignInFacebookBase extends Component {
                 role = dbrole.role;
               }
 
-              console.log(role);
-         
               // Create a user in your Firebase Realtime Database too
               return this.props.firebase
                 .user(socialAuthUser.user.uid)

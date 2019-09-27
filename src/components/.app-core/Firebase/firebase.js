@@ -39,7 +39,6 @@ class Firebase {
             const dbUser = snapshot.val();
             
             // default empty roles
-            console.log("FB-45: " + dbUser);
             if (dbUser !== null) 
             {
               if (!dbUser.roles) {

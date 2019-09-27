@@ -43,7 +43,6 @@ class AdminPage extends Component {
   }
 
   deleteUser = (uid, evt) => {
-    console.log("Trashed " + uid);
     this.props.firebase.user(uid).remove();
   }
 

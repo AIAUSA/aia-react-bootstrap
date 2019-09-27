@@ -15,7 +15,6 @@ const withAuthorization = condition => Component => {
             authUser => {
 
               if (!condition(authUser)) {
-                console.log("condition failed");
                 this.props.history.push(ROUTES.DENY);
               }
             },
