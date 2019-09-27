@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { compose } from 'recompose';
-import { withAuthorization } from '../Session'
-import { withFirebase } from '../Firebase';
+import { withAuthorization } from '../.app-core/Session'
+import { withFirebase } from '../.app-core/Firebase';
 
 class Home extends Component {
 

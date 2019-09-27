@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AuthUserContext, withAuthorization } from '../Session';
+import { AuthUserContext, withAuthorization } from '../.app-core/Session';
 
 const AccountPage = () => (
   <AuthUserContext.Consumer>

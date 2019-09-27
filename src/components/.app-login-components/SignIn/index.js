@@ -4,34 +4,23 @@ import { compose } from 'recompose';
 
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes'
-import * as ROLES from '../../constants/roles'
+import { withFirebase } from '../../.app-core/Firebase';
+import * as ROUTES from '../../../constants/routes'
+import * as ROLES from '../../../constants/roles'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
 
-const formClass = {
-  width: '100%',
-  maxWidth: '330px',
-  padding: '15px',
-  margin: 'auto'
-}
-
-const bodyClass = { textAlign: 'center' }
-
 const SignInPage = () => (
-  <div style={bodyClass} className="h-100 row align-items-center">
-    <form style={formClass}>
-      <img class="mb-4" src="/aia-logo.png" alt="" width="156" />
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <div className="center-text h-100 row align-items-center">
+    <div className="form-base">
+      <img className="mb-4" src="/aia-logo.png" alt="" width="156" />
+      <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
       <SignInForm />
       <SignInGoogle />
       <SignInFacebook /> 
-      {/* <PasswordForgetLink />
-      <SignUpLink /> */}
       <p class="mt-5 mb-3 text-muted">©2019</p>
-    </form>
+    </div>
   </div>
 );
 
@@ -86,18 +75,21 @@ class SignInFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" /> 
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" />
-      <div class="checkbox mb-3">
+        <label htmlFor="inputEmail" className="sr-only">Email address</label>
+      <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required="" autoFocus="" /> 
+      <label htmlFor="inputPassword" className="sr-only">Password</label>
+      <input type="password" id="inputPassword" className="form-control" placeholder="Password" required="" />
+      <div className="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me" /> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p className="text-muted mt-1">--------------- OR ---------------</p>
-        {error && <p>{error.message}</p>}
+      <button disabled={isInvalid} className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      {error && <p>{error.message}</p>}
+      <PasswordForgetLink />
+      <SignUpLink />
+      <p className="text-muted mt-1">--------------- OR ---------------</p>
+      
       </form>
     );
   }
@@ -158,9 +150,9 @@ class SignInGoogleBase extends Component {
 
     return (
       <div className="mt-2">
-        <a onClick={this.onSubmit} className="btn btn-lg btn-block btn-social btn-google">
+        <button onClick={this.onSubmit} className="btn btn-lg btn-block btn-social btn-google">
           <FontAwesomeIcon icon={faGoogle} />    Sign In with Google
-        </a>
+        </button>
 
         {error && <p>{error.message}</p>}
       </div>
@@ -227,9 +219,9 @@ class SignInFacebookBase extends Component {
 
     return (
       <div className="mt-2">
-        <a onClick={this.onSubmit} className="btn btn-lg btn-block btn-social btn-facebook">
+        <button onClick={this.onSubmit} className="btn btn-lg btn-block btn-social btn-facebook">
           <FontAwesomeIcon icon={faFacebook} />    Sign In with Facebook
-        </a>
+        </button>
 
         {error && <p>{error.message}</p>}
       </div>

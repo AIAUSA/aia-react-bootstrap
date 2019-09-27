@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 
 import * as ROLES from '../../constants/roles';
-import { withAuthorization } from '../Session';
-import { withFirebase } from '../Firebase';
+import { withAuthorization } from '../.app-core/Session';
+import { withFirebase } from '../.app-core/Firebase';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { Table, Row, Input } from 'reactstrap';
+import { Table, Row } from 'reactstrap';
 
 class AdminPage extends Component {
   constructor(props) {
@@ -112,6 +112,6 @@ const UserList = ({ users, deleteUser }) => (
     </Row>
 );
 
-const condition = authUser => authUser && authUser.roles.length > 0 && (!!authUser.roles.includes(ROLES.ADMIN) || !!authUser.roles.includes(ROLES.SUPERADMIN));
+const condition = authUser => authUser && authUser.roles.length > 0 && (!!authUser.roles.includes(ROLES.ADMIN));// || !!authUser.roles.includes(ROLES.SUPERADMIN));
 
 export default compose(withAuthorization(condition), withFirebase)(AdminPage);

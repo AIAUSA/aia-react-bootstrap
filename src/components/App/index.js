@@ -3,18 +3,21 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
-import SignUpPage from '../SignUp';
-import SignInPage from '../SignIn';
-import PasswordForgetPage from '../PasswordForget';
+import SignUpPage from '../.app-login-components/SignUp';
+import SignInPage from '../.app-login-components/SignIn';
+import PasswordForgetPage from '../.app-login-components/PasswordForget';
+import PasswordChangePage from '../.app-login-components/PasswordChange';
 import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
+import NoAccess from '../.app-core/no-access';
 
 import * as ROUTES from '../../constants/routes';
 //import { withFirebase } from '../Firebase';
 
-import { withAuthentication } from '../Session';
+import { withAuthentication } from '../.app-core/Session';
 import { Container } from 'reactstrap';
+import PasswordChange from '../.app-login-components/PasswordChange';
 
 class App extends Component {
  
@@ -51,9 +54,11 @@ class App extends Component {
                             path={ROUTES.PASSWORD_FORGET}
                             component={PasswordForgetPage}
                         />
+                        <Route path={ROUTES.PASSWORD_CHANGE} component={PasswordChangePage} />
                         <Route path={ROUTES.HOME} component={HomePage} />
                         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
                         <Route path={ROUTES.ADMIN} component={AdminPage} />
+                        <Route path={ROUTES.DENY} component={NoAccess} />
                     </Container>
                 </div>
             </Router>

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
+import { withFirebase } from '../../.app-core/Firebase';
+import * as ROUTES from '../../../constants/routes';
 
 const PasswordForgetPage = () => (
-  <div>
-    <h1>PasswordForget</h1>
-    <PasswordForgetForm />
+  <div className="center-text h-100 row align-items-center">
+    <form className="form-base">
+      <img class="mb-4" src="/aia-logo.png" alt="" width="156" />
+      <h1 class="h3 mb-3 font-weight-normal">Forget Your Password?</h1>
+      <PasswordForgetForm />
+    </form>
   </div>
 );
 
@@ -55,12 +58,14 @@ class PasswordForgetFormBase extends Component {
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
+          className="form-control mb-3"
         />
-        <button disabled={isInvalid} type="submit">
+        <button disabled={isInvalid} type="submit" className="btn btn-large btn-primary btn-block mb-3">
           Reset My Password
         </button>
 
         {error && <p>{error.message}</p>}
+        <a href="/signin"> Return to login page</a>
       </form>
     );
   }

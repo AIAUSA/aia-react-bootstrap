@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import SignOutButton from '../SignOut';
+import SignOutButton from '../.app-login-components/SignOut';
 
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
-import {AuthUserContext} from '../Session';
+import {AuthUserContext} from '../.app-core/Session';
 //import { withFirebase } from '../Firebase';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
