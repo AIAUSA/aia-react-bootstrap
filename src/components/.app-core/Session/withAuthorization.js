@@ -15,10 +15,10 @@ const withAuthorization = condition => Component => {
             authUser => {
 
               if (!condition(authUser)) {
-                this.props.history.push(ROUTES.DENY);
+                this.props.history.push('/deny');
               }
             },
-            () => this.props.history.push(ROUTES.SIGN_IN),
+            () => this.props.history.push('/sign-in'),
           );
     }
 

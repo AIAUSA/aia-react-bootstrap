@@ -62,7 +62,7 @@ class SignUpFormBase extends Component {
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.HOME);
+        this.props.history.push('/home');
       })
       .catch(error => {
         if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
@@ -150,7 +150,7 @@ class SignUpFormBase extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    Don't have an account? <Link to="/sign-up">Sign Up</Link>
   </p>
 );
 

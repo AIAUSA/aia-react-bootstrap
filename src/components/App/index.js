@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Navigation from '../Navigation';
-import SignUpPage from '../.app-login-components/SignUp';
 import SignInPage from '../.app-login-components/SignIn';
-import PasswordForgetPage from '../.app-login-components/PasswordForget';
-import PasswordChangePage from '../.app-login-components/PasswordChange';
-import HomePage from '../Home';
-import AccountPage from '../Account';
-import AdminPage from '../Admin';
 import NoAccess from '../.app-core/no-access';
 
-import * as ROUTES from '../../constants/routes';
 //import { withFirebase } from '../Firebase';
 
 import { withAuthentication } from '../.app-core/Session';
-import { Container } from 'reactstrap';
+
+
+const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
+
+// Containers
+const DefaultLayout = React.lazy(() => import('../.coreui/containers/DefaultLayout'));
 
 class App extends Component {
  
@@ -42,23 +39,13 @@ class App extends Component {
     render() {
         return(
             <Router>
-                <div>
-                    <Navigation />
-                    <Container>
-                        <Route exact path={ROUTES.LANDING} component={HomePage} />
-                        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-                        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-                        <Route
-                            path={ROUTES.PASSWORD_FORGET}
-                            component={PasswordForgetPage}
-                        />
-                        <Route path={ROUTES.PASSWORD_CHANGE} component={PasswordChangePage} />
-                        <Route path={ROUTES.HOME} component={HomePage} />
-                        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-                        <Route path={ROUTES.ADMIN} component={AdminPage} />
-                        <Route path={ROUTES.DENY} component={NoAccess} />
-                    </Container>
-                </div>
+                <React.Suspense fallback={loading()}>
+                <Switch>
+                    <Route exact path="/sign-in" component={SignInPage} />
+                    <Route exact path="/deny" component={NoAccess} />
+                    <Route path="/"  render={props => <DefaultLayout {...props}/>} />
+                </Switch>
+                </React.Suspense>
             </Router>
         );
     }

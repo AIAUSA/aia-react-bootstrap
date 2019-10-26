@@ -12,13 +12,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
 
 const SignInPage = () => (
-  <div className="center-text h-100 row align-items-center">
+  <div className="center-text h-100 row align-items-center mt-5">
     <div className="form-base">
-      <img className="mb-4" src="/aia-logo.png" alt="" width="156" />
+      <img className="mb-4" src="https://www.myletterservice.org/images/logo.png" alt="" width="156" />
       <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <SignInForm />
+      {/* <SignInForm /> */}
       <SignInGoogle />
-      <SignInFacebook /> 
+      {/* <SignInFacebook />  */}
       <p class="mt-5 mb-3 text-muted">©2019</p>
     </div>
   </div>
@@ -55,7 +55,7 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.HOME);
+        this.props.history.push('/dashboard');
       })
       .catch(error => {
         this.setState({ error });
@@ -133,7 +133,7 @@ class SignInGoogleBase extends Component {
       })
       .then(() => {
         this.setState({ error: null });
-        this.props.history.push(ROUTES.HOME);
+        this.props.history.push('/dashboard');
       })
       .catch(error => {
         this.setState({ error });
@@ -195,7 +195,7 @@ class SignInFacebookBase extends Component {
       })
       .then(() => {
         this.setState({ error: null });
-        this.props.history.push(ROUTES.HOME);
+        this.props.history.push('/dashboard');
       })
       .catch(error => {
         if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {

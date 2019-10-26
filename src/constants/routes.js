@@ -1,9 +1,15 @@
-export const LANDING = '/';
-export const SIGN_UP = '/signup';
-export const SIGN_IN = '/signin';
-export const HOME = '/home';
-export const ACCOUNT = '/account';
-export const ADMIN = '/admin';
-export const PASSWORD_FORGET = '/pw-forget';
-export const PASSWORD_CHANGE = '/pw-change';
-export const DENY = '/no-access'
+import React from 'react';
+
+const Dashboard = React.lazy(() => import('../components/Home/'));
+const Account = React.lazy(() => import('../components/Account/'));
+const Admin = React.lazy(() => import('../components/Admin/'));
+
+// https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
+const routes = [
+  { path: '/', exact: true, name: 'Home' },
+  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/admin', name:'Admin', component: Admin },
+  { path: '/account', name:'Account', component: Account },
+];
+
+export default routes;

@@ -7,8 +7,8 @@ import { withAuthorization } from '../.app-core/Session';
 import { withFirebase } from '../.app-core/Firebase';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { Table, Row } from 'reactstrap';
+import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Table, Col, Row, CardHeader, CardBody, Card } from 'reactstrap';
 
 class AdminPage extends Component {
   constructor(props) {
@@ -61,20 +61,28 @@ class AdminPage extends Component {
     return (
       <div>
         <Row>
-          <h2>User Administration</h2>
-          {loading && <div>Loading ...</div>}
+          <Col xs="12">
+            <Card>
+              <CardHeader>
+                <h2>User Administration</h2>
+                {loading && <div>Loading ...</div>}
+              </CardHeader>
+              <CardBody>
+                <div className="col mb-2">
+                  <div className="float-right">
+                    <input type="email" value={this.state.newUser} onChange={this.handleInputChange} />
+                    <button onClick={(evt) => this.addUser("Test")}>
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  </div>
+                </div>
+              </CardBody>
+              <CardBody>
+                <UserList users={users} deleteUser={this.deleteUser}/>
+              </CardBody>
+            </Card>
+          </Col>
         </Row>
-        <Row>
-          <div className="col mb-2">
-            <div className="float-right">
-              <input type="email" value={this.state.newUser} onChange={this.handleInputChange} />
-              <button onClick={(evt) => this.addUser("Test")}>
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-            </div>
-          </div>
-        </Row>
-        <UserList users={users} deleteUser={this.deleteUser}/>
       </div>
     );
   }
@@ -111,6 +119,6 @@ const UserList = ({ users, deleteUser }) => (
     </Row>
 );
 
-const condition = authUser => authUser && authUser.roles.length > 0 && (!!authUser.roles.includes(ROLES.ADMIN));// || !!authUser.roles.includes(ROLES.SUPERADMIN));
+const condition = authUser => authUser && authUser.roles.length > 0 && (!!authUser.roles.includes(ROLES.ADMIN)|| !!authUser.roles.includes(ROLES.SUPERADMIN));
 
 export default compose(withAuthorization(condition), withFirebase)(AdminPage);
