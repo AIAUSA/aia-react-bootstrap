@@ -14,7 +14,7 @@ import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
 const SignInPage = () => (
   <div className="center-text h-100 row align-items-center mt-5">
     <div className="form-base">
-      <img className="mb-4" src="https://www.myletterservice.org/images/logo.png" alt="" width="156" />
+      <img className="mb-4" src="aia-logo.png" alt="" width="156" />
       <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
       {/* <SignInForm /> */}
       <SignInGoogle />
