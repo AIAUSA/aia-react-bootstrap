@@ -62,6 +62,7 @@ class Firebase {
     });
 
   // *** User API *** DO NOT MODIFY
+  username = () => this.auth.currentUser.email;
   user = uid => this.db.ref(`admin/users/${uid}`);
   users = () => this.db.ref('admin/users');
   checkRole = email => this.db.ref(`admin/roles/${email}`);
