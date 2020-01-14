@@ -65,6 +65,7 @@ class Firebase {
   username = () => this.auth.currentUser.email;
   user = uid => this.db.ref(`admin/users/${uid}`);
   users = () => this.db.ref('admin/users');
+  pending = () => this.db.ref('admin/roles');
   checkRole = email => this.db.ref(`admin/roles/${email}`);
 }
  
