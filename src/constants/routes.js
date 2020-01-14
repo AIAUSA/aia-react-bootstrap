@@ -2,7 +2,7 @@ import React from 'react';
 
 const Dashboard = React.lazy(() => import('../components/Home/'));
 const Account = React.lazy(() => import('../components/Account/'));
-const Admin = React.lazy(() => import('../components/Admin/'));
+const Admin = React.lazy(() => import('../components/.shared/Admin/'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
