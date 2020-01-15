@@ -41,7 +41,7 @@ class DefaultHeader extends Component {
                     <NavLink to="/admin" className="nav-link">Site Administration</NavLink>
                   </NavItem>
                 </Nav>
-                <Nav className="ml-auto" navbar>
+                <Nav className="ml-auto mr-5" navbar>
                   <UncontrolledDropdown nav direction="down">
                     <DropdownToggle nav>
                       { authUser.username }
