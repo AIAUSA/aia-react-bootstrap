@@ -1,3 +1,0 @@
-[submodule "src/components/.shared"]
-	path = src/components/.shared
-	url = git@github.com:AIAUSA/aia-react-components.git
